@@ -4,9 +4,10 @@ module RetinaJs
 end
 
 module ImageHelper
-  def image_tag_with_at2x(name_at_1x, options={})
-    name_at_2x = name_at_1x.gsub(%r{\.\w+$}, '@2x\0')
-    image_tag(name_at_1x, options.merge("data-rjs" => asset_path(name_at_2x)))
+  def retina_image_tag(source, options={})
+    resolution = options.delete(:resolution) || 2
+    updated_source = source.gsub(%r[.[^.]*$], "@#{resolution}x\\0")
+    image_tag(source, options.merge(data: { rjs: asset_path(updated_source) }))
   end
 end
 ActionView::Base.send :include, ImageHelper

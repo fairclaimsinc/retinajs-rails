@@ -30,12 +30,22 @@ Now you will be able to render retina images by using the `image_tag_with_at2x` 
 image_tag "logo.png"
 
 # With:
-image_tag_with_at2x "logo.png"
+retina_image_tag "logo.png"
 ```
 
 This will output the HTML similar to:
 ```html
 <img data-rjs="/assets/logo@2x.png" src="/assets/logo.png">
+```
+
+You can specify the cap through options
+```
+retina_image_tag "logo.png"
+```
+
+This will output the HTML similar to:
+```html
+<img data-rjs="/assets/logo@3x.png" src="/assets/logo.png">
 ```
 
 ### SCSS mixin
